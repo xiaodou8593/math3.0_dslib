@@ -1,0 +1,16 @@
+#math:space/doc
+#空间的数据模板
+{
+	start:[0,0,0],
+	len:[1,1,1],
+	step:[1,1,1]
+}
+
+data modify storage math:io input set value {len:[5,5,5]}
+function math:space/_new
+execute as @e[tag=result,limit=1] run say hi
+
+execute as @e[tag=result,limit=1] run function math:space/_get
+scoreboard players set inp int 4
+execute as @e[tag=math_marker,limit=1] run function math:space/_topos
+execute at @e[tag=math_marker,limit=1] run setblock ~ ~ ~ stone

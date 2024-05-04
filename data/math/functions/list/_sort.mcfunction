@@ -1,6 +1,6 @@
 #math:list/_sort
 # 对列表运行排序算法
-# 输入排序规则storage math:io sort_cmp
+# 输入排序规则函数storage math:io sort_cmp
 
 data modify storage math:io rec prepend value {}
 
