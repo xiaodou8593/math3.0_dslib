@@ -1,0 +1,8 @@
+# matcher的临时对象
+{
+	storage math:io string_matcher,
+	<sstemp_cnt,int>,
+	<sstemp_cur,int>,
+	<sstemp_min,int>,
+	<sstemp_max,int>
+}

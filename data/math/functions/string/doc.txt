@@ -1,0 +1,6 @@
+# string的临时对象
+{
+	storage math:io string_chars:[{char:"a"},{char:"b"},{char:"c"}],
+	<string_n,int>,
+	<string_phi,int>
+}
