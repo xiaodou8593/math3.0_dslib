@@ -7,5 +7,5 @@ execute store result score pstring_n int run data get storage math:io input
 scoreboard players set pstring_phi int 0
 
 # 进入循环
-scoreboard players operation ssloop int = string_n int
+scoreboard players operation ssloop int = pstring_n int
 execute if score ssloop int matches 1.. run function math:pstring/raw_loop

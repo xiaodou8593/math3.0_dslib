@@ -15,3 +15,10 @@ function math:string/_print
 
 function math:string/_rephi
 function math:string/_print
+
+scoreboard players set inp int 8
+function math:string/_next_i
+function math:string/_print
+
+function math:string/_rephi
+function math:string/_print
