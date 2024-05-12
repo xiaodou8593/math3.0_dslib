@@ -13,7 +13,7 @@ scoreboard players set res int 1
 
 # 尝试喂饱每一个匹配器
 scoreboard players set sstemp_phi int 0
-execute store result score sssloop int if data storage math:io input[]
+execute store result score sssloop int run data get storage math:io input
 execute if score sssloop int matches 1.. run function math:string/matcher/loop
 
 scoreboard players operation res int *= sstemp_cnt int

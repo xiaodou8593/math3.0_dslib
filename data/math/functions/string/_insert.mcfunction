@@ -5,4 +5,4 @@
 data modify storage math:io temp set from storage math:io pstring_chars
 execute if data storage math:io temp[0] run function math:string/insert_loop
 
-execute store result score string_n int if data storage math:io string_chars[]
+execute store result score string_n int run data get storage math:io string_chars[]
