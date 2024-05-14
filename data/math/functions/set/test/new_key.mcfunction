@@ -25,7 +25,6 @@ function math:set/_new_key with storage math:io {}
 function math:set/_print
 
 # 将值中的key转义后套一层单引号作为set的compound键
-# 这里的字符串化是经过宏命令转义后再套上单引号的操作，如"123d" -> '123'，"a\"bc" -> 'ab"c'，"0.5f" -> '.5'
 data modify storage math:io input set value {key:123.0d,value:456}
 function math:compound/hash/key
 function math:set/_new_key with storage math:io {}

@@ -29,7 +29,7 @@ function math:set/_print
 
 # 将数字宏转义后添加进集合
 function math:set/_clear
-#data modify storage math:io hash_func set value "math:compound/hash/self_string"
+data modify storage math:io hash_func set value "math:compound/hash/self"
 data modify storage math:io input set value 0.1234d
 function math:set/_append
 function math:set/_print
@@ -41,7 +41,7 @@ data modify storage math:io input set value "aaa"
 function math:set/_append
 function math:set/_print
 
-# 将compound添加进集合
+# 将compound宏转义添加进集合
 function math:set/_clear
 #data modify storage math:io hash_func set value "math:compound/hash/self"
 data modify storage math:io input set value {key:"something",value:456}

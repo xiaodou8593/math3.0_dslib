@@ -5,7 +5,7 @@ tellraw @a "--- math:set remove test ---"
 
 scoreboard players set set_n int 2
 data modify storage math:io set set value {"0.123d":0.123d, "math":math}
-data modify storage math:io set_keys set value [{key:"123"}, {key:"math"}]
+data modify storage math:io set_keys set value [{key:"0.123d"}, {key:"math"}]
 data modify storage math:io hash_func set value "math:compound/hash/self_string"
 
 data modify storage math:io input set value 123
