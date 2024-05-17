@@ -9,4 +9,4 @@ execute if score sstemp int matches 0 run return run function math:set/keys_next
 
 # key在，则删除set的第一个key
 data remove storage math:io set_keys[0]
-$data remove storage math:io set.$(key)
+$data remove storage math:io set.'$(key)'

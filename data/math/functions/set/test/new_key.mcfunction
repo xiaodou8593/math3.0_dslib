@@ -12,23 +12,27 @@ data modify storage math:io set_keys set value [{key:"abc"}, {key:"math"}]
 data modify storage math:io input set value "0.123"
 data modify storage math:io key set value "0.123"
 function math:set/_new_key with storage math:io {}
-function math:set/_print
 
 data modify storage math:io input set value "0.123"
 data modify storage math:io key set value "0.123"
 function math:set/_new_key with storage math:io {}
-function math:set/_print
+function math:set/_print_raw
+
+data modify storage math:io input set value 0.123
+function math:compound/hash/self
+function math:set/_new_key with storage math:io {}
+function math:set/_print_raw
 
 data modify storage math:io input set value "test"
 function math:compound/hash/self
 function math:set/_new_key with storage math:io {}
-function math:set/_print
+function math:set/_print_raw
 
 # 将值中的key转义后套一层单引号作为set的compound键
-data modify storage math:io input set value {key:123.0d,value:456}
+data modify storage math:io input set value {key:233.0d,value:233}
 function math:compound/hash/key
 function math:set/_new_key with storage math:io {}
-function math:set/_print
+function math:set/_print_raw
 
 return 0
 # 字符串键中应该避免出现单引号（错误示范）
@@ -40,4 +44,4 @@ function math:set/_new_key with storage math:io {}
 data modify storage math:io input set value {key:123456,value:"ma'am"}
 function math:compound/hash/key
 function math:set/_new_key with storage math:io {}
-function math:set/_print
+function math:set/_print_raw

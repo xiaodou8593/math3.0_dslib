@@ -8,6 +8,6 @@ data modify storage math:io set set value {}
 data modify storage math:io set_keys set value []
 
 data modify storage math:io temp set from storage math:io list
-execute store result score ssloop int run scoreboard players operation set_n int = list_n int
+scoreboard players operation ssloop int = list_n int
 function math:set/list_to/loop
-
+execute store result score set_n int run data get storage math:io set_keys

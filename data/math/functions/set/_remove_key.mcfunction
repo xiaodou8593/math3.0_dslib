@@ -1,7 +1,6 @@
-#math:set/remove_key
-# 删除集合compound中的键以及键对应的值
+#math:set/_remove_key
+# 直接删除集合compound中的键和值，可能误删
 # 输入键macro storage math:io {key}
 
-$data remove storage math:io set_keys[{key:'$(key)'}]
+$data remove storage math:io set_keys[{key:$(key)}]
 $data remove storage math:io set.'$(key)'
-execute store result score set_n int run data get storage math:io set_keys
