@@ -1,0 +1,122 @@
+#临时对象
+{
+	storage math:io set,
+	storage math:io set_keys,
+	set_n int,
+
+	storage math:io iset,
+	storage math:io iset_keys,
+	iset_n int
+}
+
+#说明
+
+所有键内部均不能出现单引号，否则会运行失败
+错误例子：
+data modify storage math:io hash_func set value "math:compound/hash/self"
+# 使用元素本身作为键（"math:compound/hash/self"）
+function math:set/_clear
+data modify storage math:io input set value "ma'am"
+function math:set/_append
+data modify storage math:io input set value "I'm fine."
+function math:set/_append
+function math:set/_print
+
+输出结果为：
+math:set {
+	set_n: 0
+	set:{}
+}
+
+如果没有太在乎性能，可以直接使用auto哈希函数
+data modify storage math:io hash_func set value "math:compound/hash/auto"
+# 如果元素是数字，把元素转字符串作为键
+data modify storage math:io input set value 123.0d
+function math:set/_append
+# 如果元素是带有key的compound元素，取key作为键
+data modify storage math:io input set value {key:0, value:abc}
+function math:set/_append
+# 如果元素不是上面两种，则把本身作为键
+data modify storage math:io input set value ["bc","cd"]
+function math:set/_append
+function math:set/_print
+
+输出结果为：
+math:set {
+	set_n: 3
+	set:{0:{key:0, value:abc},123.0d:123.0d,'["bc","cd"]':["bc","cd"]}
+}
+
+如果不使用auto函数，建议参考以下表格选择哈希函数（所有元素内部不能出现单引号）：
+
+对仅包含字符串和数字的集合：
+data modify storage math:io hash_func set value "math:compound/hash/self_string"
+function math:set/_clear
+data modify storage math:io input set value 123.0d
+function math:set/_append
+data modify storage math:io input set value 1E100d
+function math:set/_append
+function math:set/_print
+
+输出结果为：
+math:set {
+	set_n: 3
+	set:{1E100d:1E100d,1E200d:1E200d,123.0d:123.0d}
+}
+
+对仅包含纯字符串，列表，复合标签的集合（所有元素内部不能出现单引号）：
+# 直接把元素放入宏函数作为键
+data modify storage math:io hash_func set value "math:compound/hash/self"
+function math:set/_clear
+data modify storage math:io input set value "a"
+function math:set/_append
+data modify storage math:io input set value ["bc","cd"]
+function math:set/_append
+data modify storage math:io input set value {"bc":"cd"}
+function math:set/_append
+function math:set/_print
+
+输出结果为：
+math:set {
+	set_n: 3
+	set:{'["bc","cd"]':["bc","cd"], a:"a", '{"bc":"cd"}':{"bc":"cd"}}
+}
+
+其他类型集合或者混合类型集合建议将元素转为`{key:整数,value:值}`或`{key:字符串,value:值}`的形式，按照key来判断元素是否重复：
+# 取元素的key，使用data string转字符串后放入宏函数作为键
+data modify storage math:io hash_func set value "math:compound/hash/key_string"
+function math:set/_clear
+data modify storage math:io input set value {key:0, value:abc}
+function math:set/_append
+data modify storage math:io input set value {key:1, value:def}
+function math:set/_append
+data modify storage math:io input set value {key:2, value:math}
+function math:set/_append
+# `{key:2, value:ghl}`和`{key:2, value:math}`的key相同，值被覆盖
+data modify storage math:io input set value {key:2, value:ghl}
+function math:set/_append
+function math:set/_print
+
+输出结果为：
+math:set {
+	set_n: 3
+	set:{0:{key:0, value:abc}, 1:{key:1, value:def}, 2:{key:2, value:ghl}}
+}
+
+宏会对键自动转义，如果不想转换形式，则要确保元素经过哈希函数得到的键在宏转义后不会产生碰撞
+错误例子：
+data modify storage math:io hash_func set value "math:compound/hash/self"
+function math:set/_clear
+# 使用元素本身作为键（"math:compound/hash/self"），1.0E-16d会被宏转化为0后再作为键
+data modify storage math:io input set value 1.0E-16d
+function math:set/_append
+# 同上，键为0，覆盖原来的值
+data modify storage math:io input set value 2.0E-16d
+function math:set/_append
+function math:set/_print
+
+输出结果为：
+math:set {
+	set_n: 1
+	set:{0: 2.0E-16d}
+}
