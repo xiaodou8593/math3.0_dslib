@@ -1,5 +1,7 @@
-#math:space/_addy
-#输入临时对象空间，输入执行者空间，将执行者空间沿着y轴拼接给临时对象空间
+#math:space/_add_y
+# 沿着y轴拼接空间
+# 输入执行者空间对象
+
 scoreboard players operation stempy int = @s space_leny
 scoreboard players operation stempy int *= @s space_stepy
 scoreboard players operation stempy int /= space_leny int

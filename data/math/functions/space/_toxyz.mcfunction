@@ -1,5 +1,8 @@
 #math:space/_toxyz
-#输入执行者，输入空间索引<inp,int>，输出到空间中的坐标到{<x,int>,<y,int>,<z,int>},1w倍率
+# 由空间索引计算空间位置
+# 输入<inp,int>
+# 输出{<x,int>, <y,int>, <z,int>}
+
 execute store result score y int run scoreboard players operation z int = inp int
 scoreboard players operation z int /= space_lenxy int
 execute store result score x int run scoreboard players operation y int %= space_lenxy int

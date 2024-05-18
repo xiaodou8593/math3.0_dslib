@@ -1,4 +1,5 @@
 #math:space/_store
+
 scoreboard players operation @s space_startx = space_startx int
 scoreboard players operation @s space_starty = space_starty int
 scoreboard players operation @s space_startz = space_startz int

@@ -1,5 +1,8 @@
 #math:space/_xyzto
-#输入{<x,int>,<y,int>,<z,int>},1w倍率，输出空间索引到res int
+# 计算空间索引坐标
+# 输入{<x,int>,<y,int>,<z,int>}
+# 输出<res,int>
+
 scoreboard players operation res int = z int
 scoreboard players operation res int /= 10000 int
 scoreboard players operation res int -= space_startz int

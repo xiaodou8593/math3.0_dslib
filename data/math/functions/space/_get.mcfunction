@@ -1,4 +1,5 @@
 #math:space/_get
+
 scoreboard players operation space_startx int = @s space_startx
 scoreboard players operation space_starty int = @s space_starty
 scoreboard players operation space_startz int = @s space_startz

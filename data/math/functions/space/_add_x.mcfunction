@@ -1,5 +1,7 @@
-#math:space/_addx
-#输入临时对象空间，输入执行者空间，将执行者空间沿着x轴拼接给临时对象空间
+#math:space/_add_x
+# 沿着x轴拼接空间
+# 输入执行者空间对象
+
 scoreboard players operation stempx int = @s space_lenx
 scoreboard players operation stempx int *= @s space_stepx
 scoreboard players operation stempx int /= space_lenx int

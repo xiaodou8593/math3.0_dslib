@@ -1,5 +1,8 @@
 #math:space/_posto
-#输入执行者位置，输出空间索引到res int
+# 计算空间索引
+# 输入执行者实体坐标
+# 输出<res,int>
+
 execute store result score res int run data get entity @s Pos[2]
 scoreboard players operation res int /= 10000 int
 scoreboard players operation res int -= space_startz int

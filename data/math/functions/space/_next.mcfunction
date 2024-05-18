@@ -1,6 +1,8 @@
 #math:space/_next
-#输入执行者位置，把执行者输出到空间中的下一个位置
-#如果迭代到头，<res,int>输出1
+# 把执行者实体迭代到空间的下一个位置
+# 输入执行者实体
+# 输出<res,int>表示是否迭代到头
+
 scoreboard players set res int 0
 execute store result score stempx int run data get entity @s Pos[0]
 execute store result entity @s Pos[0] double 1 run scoreboard players operation stempx int += space_stepx int

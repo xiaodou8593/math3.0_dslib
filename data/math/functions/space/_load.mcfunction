@@ -1,6 +1,7 @@
 #math:space/_load
-#需要传入世界实体为执行者
-#遍历临时对象空间每个区块，若未强加载，则强加载，并把世界坐标返回到storage math:io result
+# 遍历临时对象空间每个区块，若未强加载，则强加载，并把世界坐标返回到storage math:io result
+# 需要传入世界实体为执行者
+
 data modify storage math:io result set value []
 
 #x坐标区块网格化

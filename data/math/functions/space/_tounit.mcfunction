@@ -1,5 +1,9 @@
 #math:space/_tounit
-#输入执行者，输入空间索引<inp,int>，把执行者输出到单位空间(step当作1)中的位置
+# 由空间索引计算单位空间位置(step为1)
+# 输入<inp,int>
+# 输入执行者实体
+# 输出执行者实体坐标
+
 execute store result score stempy int run scoreboard players operation stempz int = inp int
 scoreboard players operation stempz int /= space_lenxy int
 execute store result score stempx int run scoreboard players operation stempy int %= space_lenxy int
